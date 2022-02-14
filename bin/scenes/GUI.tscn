@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://bin/scripts/GUI.gd" type="Script" id=2]
+
+[node name="GUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HearthBar" type="PanelContainer" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 350.0
+margin_bottom = 71.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSplit" type="HBoxContainer" parent="HearthBar"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 343.0
+margin_bottom = 64.0

@@ -1,0 +1,121 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://bin/scripts/PlayerController.gd" type="Script" id=1]
+[ext_resource path="res://bin/textures/Player/PlayerBlack-White.png" type="Texture" id=2]
+[ext_resource path="res://bin/scenes/Player/StateMachine.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20, 38.5 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 32, 48 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 7.0
+}, {
+"frames": [ SubResource( 4 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 15, 30 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 17, 38.5 )
+
+[node name="Player" type="KinematicBody2D"]
+z_index = 5
+collision_layer = 2
+collision_mask = 257
+script = ExtResource( 1 )
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, 9.5 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 4.76837e-07, -9.53674e-07 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 9 )
+animation = "Idle"
+playing = true
+
+[node name="GunShootPoint" type="Node2D" parent="Sprite"]
+position = Vector2( 4.5, -18 )
+scale = Vector2( 0.727273, 0.727273 )
+
+[node name="LadderCheck" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderCheck"]
+position = Vector2( 0, 18 )
+shape = SubResource( 2 )
+
+[node name="GroundCheck" type="Node2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="GroundCheck"]
+position = Vector2( 0, 46 )
+enabled = true
+cast_to = Vector2( 0, 7 )
+collision_mask = 257
+
+[node name="RayCast2D2" type="RayCast2D" parent="GroundCheck"]
+position = Vector2( -10, 46 )
+enabled = true
+cast_to = Vector2( 0, 7 )
+collision_mask = 257
+
+[node name="RayCast2D3" type="RayCast2D" parent="GroundCheck"]
+position = Vector2( 10, 46 )
+enabled = true
+cast_to = Vector2( 0, 7 )
+collision_mask = 257
+
+[node name="HitBox" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 64
+
+[node name="Collision" type="CollisionShape2D" parent="HitBox"]
+position = Vector2( 0, 9.5 )
+shape = SubResource( 3 )
+
+[node name="InvulnerableTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ShootingDelay" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="LadderCheck" to="." method="_Check_For_Ladder"]
+[connection signal="area_exited" from="LadderCheck" to="." method="_area_exited"]
+[connection signal="body_entered" from="HitBox" to="." method="_HitBox_Hit"]
+[connection signal="timeout" from="InvulnerableTimer" to="." method="_Invulnerable_timeout"]

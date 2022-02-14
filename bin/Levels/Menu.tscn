@@ -1,0 +1,285 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://bin/textures/Buttons/StartHover.png" type="Texture" id=1]
+[ext_resource path="res://bin/textures/Buttons/StartPressed.png" type="Texture" id=2]
+[ext_resource path="res://bin/scripts/MenuScript.gd" type="Script" id=3]
+[ext_resource path="res://bin/Fonts/Minecraft.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://bin/textures/Icons/EazyDiff.png" type="Texture" id=5]
+[ext_resource path="res://bin/textures/Icons/HardDiff.png" type="Texture" id=6]
+[ext_resource path="res://bin/textures/Icons/MediumDiff.png" type="Texture" id=7]
+[ext_resource path="res://bin/textures/Buttons/StartIdle.png" type="Texture" id=8]
+[ext_resource path="res://bin/textures/Buttons/OptionsHover.png" type="Texture" id=9]
+[ext_resource path="res://bin/textures/Buttons/OptionsPressed.png" type="Texture" id=10]
+[ext_resource path="res://bin/textures/Buttons/QuitPressed.png" type="Texture" id=11]
+[ext_resource path="res://bin/textures/Buttons/QuitIdle.png" type="Texture" id=12]
+[ext_resource path="res://bin/textures/Buttons/OptionsIdle.png" type="Texture" id=13]
+[ext_resource path="res://bin/textures/Buttons/QuitHover.png" type="Texture" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+size = 39
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.45098, 0, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 12
+shadow_size = 20
+
+[sub_resource type="Theme" id=3]
+PanelContainer/styles/panel = SubResource( 2 )
+
+[node name="Menu" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="Control" type="Control" parent="Camera2D"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -642.0
+margin_top = -359.0
+margin_right = 639.0
+margin_bottom = 361.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Camera2D/Control"]
+visible = false
+margin_left = 742.0
+margin_top = 32.0
+margin_right = 1225.0
+margin_bottom = 201.0
+custom_fonts/font = SubResource( 1 )
+text = "Z - Graj następny level
+I - Nieśmiertelność
+P - Dodaj Piłki do Poziomu
+SHIFT - Dodatkowa prętkość"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="VBoxContainer" parent="Camera2D/Control"]
+margin_left = 120.0
+margin_top = 128.0
+margin_right = 395.0
+margin_bottom = 591.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartButton" type="TextureButton" parent="Camera2D/Control/Buttons"]
+margin_right = 275.0
+margin_bottom = 151.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 1 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsButton" type="TextureButton" parent="Camera2D/Control/Buttons"]
+margin_top = 155.0
+margin_right = 275.0
+margin_bottom = 307.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 9 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitButton" type="TextureButton" parent="Camera2D/Control/Buttons"]
+margin_top = 311.0
+margin_right = 275.0
+margin_bottom = 463.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 14 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelChoser" type="PanelContainer" parent="Camera2D/Control"]
+visible = false
+self_modulate = Color( 0, 1, 1, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -373.5
+margin_top = -197.5
+margin_right = 373.5
+margin_bottom = 197.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/Control/LevelChoser"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 740.0
+margin_bottom = 388.0
+alignment = 1
+
+[node name="HBox" type="HBoxContainer" parent="Camera2D/Control/LevelChoser/VBoxContainer"]
+margin_right = 733.0
+margin_bottom = 188.0
+size_flags_vertical = 3
+
+[node name="TEST" type="Button" parent="Camera2D/Control/LevelChoser/VBoxContainer/HBox"]
+margin_right = 180.0
+margin_bottom = 188.0
+size_flags_horizontal = 3
+text = "Test Level"
+
+[node name="Level1" type="Button" parent="Camera2D/Control/LevelChoser/VBoxContainer/HBox"]
+margin_left = 184.0
+margin_right = 364.0
+margin_bottom = 188.0
+size_flags_horizontal = 3
+text = "Level 1"
+
+[node name="Level2" type="Button" parent="Camera2D/Control/LevelChoser/VBoxContainer/HBox"]
+margin_left = 368.0
+margin_right = 548.0
+margin_bottom = 188.0
+size_flags_horizontal = 3
+text = "Level 2"
+
+[node name="Level3" type="Button" parent="Camera2D/Control/LevelChoser/VBoxContainer/HBox"]
+margin_left = 552.0
+margin_right = 733.0
+margin_bottom = 188.0
+size_flags_horizontal = 3
+text = "Level 3"
+
+[node name="HBox2" type="HBoxContainer" parent="Camera2D/Control/LevelChoser/VBoxContainer"]
+margin_top = 192.0
+margin_right = 733.0
+margin_bottom = 381.0
+size_flags_vertical = 3
+
+[node name="Level4" type="Button" parent="Camera2D/Control/LevelChoser/VBoxContainer/HBox2"]
+margin_right = 180.0
+margin_bottom = 189.0
+size_flags_horizontal = 3
+disabled = true
+text = "Level 4"
+
+[node name="Level5" type="Button" parent="Camera2D/Control/LevelChoser/VBoxContainer/HBox2"]
+margin_left = 184.0
+margin_right = 364.0
+margin_bottom = 189.0
+size_flags_horizontal = 3
+disabled = true
+text = "Level 5"
+
+[node name="Level6" type="Button" parent="Camera2D/Control/LevelChoser/VBoxContainer/HBox2"]
+margin_left = 368.0
+margin_right = 548.0
+margin_bottom = 189.0
+size_flags_horizontal = 3
+disabled = true
+text = "Level 6"
+
+[node name="Level7" type="Button" parent="Camera2D/Control/LevelChoser/VBoxContainer/HBox2"]
+margin_left = 552.0
+margin_right = 733.0
+margin_bottom = 189.0
+size_flags_horizontal = 3
+disabled = true
+text = "Level 7"
+
+[node name="DifficultyChoser" type="PanelContainer" parent="Camera2D/Control"]
+visible = false
+self_modulate = Color( 0.529412, 0.533333, 0.537255, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -374.0
+margin_top = -199.5
+margin_right = 374.0
+margin_bottom = 199.5
+theme = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/Control/DifficultyChoser"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 743.0
+margin_bottom = 394.0
+alignment = 1
+
+[node name="Eazy" type="Button" parent="Camera2D/Control/DifficultyChoser/HBoxContainer"]
+margin_right = 243.0
+margin_bottom = 389.0
+size_flags_horizontal = 3
+text = "Eazy"
+icon = ExtResource( 5 )
+flat = true
+clip_text = true
+expand_icon = true
+
+[node name="Medium" type="Button" parent="Camera2D/Control/DifficultyChoser/HBoxContainer"]
+margin_left = 247.0
+margin_right = 490.0
+margin_bottom = 389.0
+size_flags_horizontal = 3
+text = "Medium"
+icon = ExtResource( 7 )
+flat = true
+clip_text = true
+expand_icon = true
+
+[node name="Hard" type="Button" parent="Camera2D/Control/DifficultyChoser/HBoxContainer"]
+margin_left = 494.0
+margin_right = 738.0
+margin_bottom = 389.0
+size_flags_horizontal = 3
+text = "Hard"
+icon = ExtResource( 6 )
+flat = true
+clip_text = true
+expand_icon = true
+
+[connection signal="pressed" from="Camera2D/Control/Buttons/StartButton" to="." method="_on_Start_pressed"]
+[connection signal="button_up" from="Camera2D/Control/Buttons/QuitButton" to="." method="_Quit"]
+[connection signal="pressed" from="Camera2D/Control/LevelChoser/VBoxContainer/HBox/TEST" to="." method="_on_TEST_pressed"]
+[connection signal="pressed" from="Camera2D/Control/LevelChoser/VBoxContainer/HBox/Level1" to="." method="_LEVEL1_pressed"]
+[connection signal="pressed" from="Camera2D/Control/LevelChoser/VBoxContainer/HBox/Level2" to="." method="_on_Level2_pressed"]
+[connection signal="pressed" from="Camera2D/Control/LevelChoser/VBoxContainer/HBox/Level3" to="." method="_on_Level3_pressed"]
+[connection signal="pressed" from="Camera2D/Control/DifficultyChoser/HBoxContainer/Eazy" to="." method="_Eazy_pressed"]
+[connection signal="pressed" from="Camera2D/Control/DifficultyChoser/HBoxContainer/Medium" to="." method="_Medium_pressed"]
+[connection signal="pressed" from="Camera2D/Control/DifficultyChoser/HBoxContainer/Hard" to="." method="_Hard_pressed"]

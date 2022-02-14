@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://bin/scripts/BallSpawnScript.gd" type="Script" id=1]
+
+[node name="BallSpawn" type="Node2D" groups=["BallSpawnPoints"]]
+script = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -52.0
+margin_top = -48.0
+margin_right = 53.0
+margin_bottom = -34.0
+text = "Difficulty-Eazy"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

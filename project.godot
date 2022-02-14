@@ -21,8 +21,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Pang"
-run/main_scene="res://bin/Levels/GameManager.tscn"
-config/icon="res://bin/textures/icon.png"
+run/main_scene="res://bin/scenes/GameManager.tscn"
+
+[autoload]
+
+Global="*res://bin/scripts/Global.gd"
+LevelBase="*res://bin/scripts/Level_Base.gd"
 
 [display]
 
@@ -31,6 +35,7 @@ window/size/height=720
 window/size/resizable=false
 window/size/test_width=1280
 window/size/test_height=720
+window/vsync/use_vsync=false
 
 [gdnative]
 
@@ -105,13 +110,36 @@ Space={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":32,"unicode":0,"echo":false,"script":null)
  ]
 }
+Up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+DEV_SHIFT={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777237,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [layer_names]
 
 2d_physics/layer_1="Terrain"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemy"
+2d_physics/layer_4="PlayerBullets"
+2d_physics/layer_7="EnemyHitBox"
+2d_physics/layer_9="Platform"
+2d_physics/layer_10="Ladder"
 
 [physics]
 
 common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_clear_color=Color( 0.262745, 0.278431, 0.301961, 1 )

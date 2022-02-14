@@ -1,0 +1,148 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://bin/scenes/TestScene.tres" type="TileSet" id=1]
+[ext_resource path="res://bin/textures/Wallpaper.png" type="Texture" id=2]
+[ext_resource path="res://bin/scenes/GUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://bin/scenes/Player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://bin/scenes/BallSpawn.tscn" type="PackedScene" id=5]
+[ext_resource path="res://bin/scripts/LevelScript.gd" type="Script" id=7]
+[ext_resource path="res://bin/scenes/Ladder.tscn" type="PackedScene" id=10]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+glow_enabled = true
+glow_hdr_threshold = 0.0
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 7 )
+Level = 3
+
+[node name="GUI" parent="." instance=ExtResource( 3 )]
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -1, 6, 0, -65536, 5, 0, -65535, 5, 0, -65534, 5, 0, -65533, 5, 0, -65532, 5, 0, -65531, 5, 0, -65530, 5, 0, -65529, 5, 0, -65528, 5, 0, -65527, 5, 0, -65526, 5, 0, -65525, 5, 0, -65524, 5, 0, -65523, 5, 0, -65522, 5, 0, -65521, 5, 0, -65520, 5, 0, -65519, 5, 0, -65518, 5, 0, -65517, 5, 0, -65516, 5, 0, -65515, 5, 0, -65514, 5, 0, -65513, 5, 0, -65512, 5, 0, -65511, 5, 0, -65510, 5, 0, -65509, 5, 0, -65508, 5, 0, -65507, 5, 0, -65506, 5, 0, -65505, 5, 0, -65504, 5, 0, -65503, 5, 0, -65502, 5, 0, -65501, 5, 0, -65500, 5, 0, -65499, 5, 0, -65498, 5, 0, -65497, 5, 0, -65496, 2, 0, 65535, 6, 0, 19, 15, 0, 40, 2, 0, 131071, 6, 0, 65576, 2, 0, 196607, 6, 0, 131112, 2, 0, 262143, 6, 0, 196648, 2, 0, 327679, 6, 0, 262148, 15, 0, 262178, 15, 0, 262184, 2, 0, 393215, 6, 0, 327720, 2, 0, 458751, 6, 0, 393256, 2, 0, 524287, 6, 0, 458757, 17, 0, 458761, 14, 0, 458781, 14, 0, 458782, 17, 0, 458792, 2, 0, 589823, 6, 0, 524328, 2, 0, 655359, 6, 0, 589864, 2, 0, 720895, 6, 0, 655377, 13, 0, 655379, 14, 0, 655380, 13, 0, 655400, 2, 0, 786431, 6, 0, 720915, 14, 0, 720936, 2, 0, 851967, 6, 0, 786451, 15, 0, 786472, 2, 0, 917503, 6, 0, 851977, 17, 0, 851983, 17, 0, 851988, 17, 0, 851994, 17, 0, 852008, 2, 0, 983039, 6, 0, 917513, 16, 0, 917533, 16, 0, 917544, 2, 0, 1048575, 6, 0, 983047, 13, 0, 983070, 13, 0, 983072, 14, 0, 983080, 2, 0, 1114111, 6, 0, 1048595, 14, 0, 1048616, 2, 0, 1179647, 6, 0, 1114112, 13, 0, 1114114, 14, 0, 1114149, 14, 0, 1114150, 13, 0, 1114152, 2, 0, 1245183, 6, 0, 1179688, 2, 0, 1310719, 6, 0, 1245224, 2, 0, 1376255, 6, 0, 1310760, 2, 0, 1441791, 2, 0, 1376256, 3, 0, 1376257, 5, 0, 1376258, 5, 0, 1376259, 5, 0, 1376260, 5, 0, 1376261, 5, 0, 1376262, 5, 0, 1376263, 5, 0, 1376264, 5, 0, 1376265, 5, 0, 1376266, 5, 0, 1376267, 5, 0, 1376268, 5, 0, 1376269, 5, 0, 1376270, 5, 0, 1376271, 5, 0, 1376272, 5, 0, 1376273, 5, 0, 1376274, 5, 0, 1376275, 5, 0, 1376276, 5, 0, 1376277, 5, 0, 1376278, 5, 0, 1376279, 5, 0, 1376280, 5, 0, 1376281, 5, 0, 1376282, 5, 0, 1376283, 5, 0, 1376284, 5, 0, 1376285, 5, 0, 1376286, 5, 0, 1376287, 5, 0, 1376288, 5, 0, 1376289, 5, 0, 1376290, 5, 0, 1376291, 5, 0, 1376292, 5, 0, 1376293, 5, 0, 1376294, 5, 0, 1376295, 4, 0, 1376296, 2, 0, 1507327, 11, 0, 1441792, 9, 0, 1441793, 9, 0, 1441794, 9, 0, 1441795, 9, 0, 1441796, 9, 0, 1441797, 9, 0, 1441798, 9, 0, 1441799, 9, 0, 1441800, 9, 0, 1441801, 9, 0, 1441802, 9, 0, 1441803, 9, 0, 1441804, 9, 0, 1441805, 9, 0, 1441806, 9, 0, 1441807, 9, 0, 1441808, 9, 0, 1441809, 9, 0, 1441810, 9, 0, 1441811, 9, 0, 1441812, 9, 0, 1441813, 9, 0, 1441814, 9, 0, 1441815, 9, 0, 1441816, 9, 0, 1441817, 9, 0, 1441818, 9, 0, 1441819, 9, 0, 1441820, 9, 0, 1441821, 9, 0, 1441822, 9, 0, 1441823, 9, 0, 1441824, 9, 0, 1441825, 9, 0, 1441826, 9, 0, 1441827, 9, 0, 1441828, 9, 0, 1441829, 9, 0, 1441830, 9, 0, 1441831, 9, 0, 1441832, 7, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 640, 360 )
+current = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 928, 624 )
+
+[node name="BallSpawns" type="Node" parent="."]
+
+[node name="Eazy" type="Node" parent="BallSpawns"]
+
+[node name="BallSpawn" parent="BallSpawns/Eazy" instance=ExtResource( 5 )]
+position = Vector2( 128, 432 )
+
+[node name="BallSpawn2" parent="BallSpawns/Eazy" instance=ExtResource( 5 )]
+position = Vector2( 464, 96 )
+BallSpawnSize = 2
+
+[node name="BallSpawn3" parent="BallSpawns/Eazy" instance=ExtResource( 5 )]
+position = Vector2( 1088, 400 )
+BallSpawnSize = 1
+
+[node name="Medium" type="Node" parent="BallSpawns"]
+
+[node name="BallSpawn" parent="BallSpawns/Medium" instance=ExtResource( 5 )]
+position = Vector2( 480, 336 )
+Difficulty = 1
+BallSpawnSize = 1
+
+[node name="BallSpawn3" parent="BallSpawns/Medium" instance=ExtResource( 5 )]
+position = Vector2( 208, 160 )
+Difficulty = 1
+
+[node name="BallSpawn2" parent="BallSpawns/Medium" instance=ExtResource( 5 )]
+position = Vector2( 624, 640 )
+Difficulty = 1
+BallSpawnSize = 2
+
+[node name="Hard" type="Node" parent="BallSpawns"]
+
+[node name="BallSpawn" parent="BallSpawns/Hard" instance=ExtResource( 5 )]
+position = Vector2( 800, 336 )
+Difficulty = 2
+
+[node name="BallSpawn2" parent="BallSpawns/Hard" instance=ExtResource( 5 )]
+position = Vector2( 624, 176 )
+Difficulty = 2
+
+[node name="LadderRight" type="Node" parent="."]
+
+[node name="Ladder" parent="LadderRight" instance=ExtResource( 10 )]
+position = Vector2( 800, 432 )
+TopPlatform = true
+
+[node name="Ladder2" parent="LadderRight" instance=ExtResource( 10 )]
+position = Vector2( 800, 464 )
+
+[node name="Ladder3" parent="LadderRight" instance=ExtResource( 10 )]
+position = Vector2( 800, 496 )
+
+[node name="Ladder4" parent="LadderRight" instance=ExtResource( 10 )]
+position = Vector2( 800, 528 )
+
+[node name="Ladder5" parent="LadderRight" instance=ExtResource( 10 )]
+position = Vector2( 800, 560 )
+
+[node name="Ladder6" parent="LadderRight" instance=ExtResource( 10 )]
+position = Vector2( 800, 592 )
+
+[node name="Ladder7" parent="LadderRight" instance=ExtResource( 10 )]
+position = Vector2( 800, 624 )
+
+[node name="Ladder8" parent="LadderRight" instance=ExtResource( 10 )]
+position = Vector2( 800, 656 )
+
+[node name="LadderLeft" type="Node" parent="."]
+
+[node name="Ladder" parent="LadderLeft" instance=ExtResource( 10 )]
+position = Vector2( 448, 432 )
+TopPlatform = true
+
+[node name="Ladder2" parent="LadderLeft" instance=ExtResource( 10 )]
+position = Vector2( 448, 464 )
+
+[node name="Ladder3" parent="LadderLeft" instance=ExtResource( 10 )]
+position = Vector2( 448, 496 )
+
+[node name="Ladder4" parent="LadderLeft" instance=ExtResource( 10 )]
+position = Vector2( 448, 528 )
+
+[node name="Ladder5" parent="LadderLeft" instance=ExtResource( 10 )]
+position = Vector2( 448, 560 )
+
+[node name="Ladder6" parent="LadderLeft" instance=ExtResource( 10 )]
+position = Vector2( 448, 592 )
+
+[node name="Ladder7" parent="LadderLeft" instance=ExtResource( 10 )]
+position = Vector2( 448, 624 )
+
+[node name="Ladder8" parent="LadderLeft" instance=ExtResource( 10 )]
+position = Vector2( 448, 656 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/ParallaxBackground"]
+position = Vector2( -32.9999, -31 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
